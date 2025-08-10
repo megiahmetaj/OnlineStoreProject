@@ -32,6 +32,9 @@ public class Order {
     @OneToMany(cascade = CascadeType.ALL)
     private List<OrderLine> orderLine = new ArrayList<>();
 
+    @Enumerated(EnumType.STRING)
+    private OrderStatus status;
+
     @ManyToOne
     private User client;
 }
