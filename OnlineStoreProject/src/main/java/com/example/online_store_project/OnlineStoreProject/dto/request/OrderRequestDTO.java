@@ -22,6 +22,8 @@ public class OrderRequestDTO {
     private List<OrderLineRequestDTO> orderLines;
 
     @NotNull(message = "Client ID is required")
-    private Long clientId;
+    private Long userId;
+
+
 
 }

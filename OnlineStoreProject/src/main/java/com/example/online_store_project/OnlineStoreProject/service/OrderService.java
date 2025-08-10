@@ -33,7 +33,7 @@ public class OrderService {
 
     @Transactional
     public OrderResponseDTO createOrder(OrderRequestDTO dto) {
-        User client = userRepository.findById(dto.getClientId())
+        User client = userRepository.findById(dto.getUserId())
                 .orElseThrow(() -> new EntityNotFoundException("Client not found"));
 
         Order order = new Order();
