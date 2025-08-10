@@ -2,11 +2,15 @@ package com.example.online_store_project.OnlineStoreProject.controller;
 
 import com.example.online_store_project.OnlineStoreProject.dto.request.UserRequestDTO;
 import com.example.online_store_project.OnlineStoreProject.dto.response.UserResponseDTO;
+import com.example.online_store_project.OnlineStoreProject.entity.User;
+import com.example.online_store_project.OnlineStoreProject.enums.Role;
 import com.example.online_store_project.OnlineStoreProject.service.UserService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/users")
@@ -51,5 +55,21 @@ public class UserController {
         }
     }
 
-    // Add login, logout endpoints with Spring Security later
+    @GetMapping
+    public ResponseEntity<List<User>> getAllUsers() {
+        return ResponseEntity.ok(userService.getAllUsers());
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteUser(@PathVariable Long id) {
+        userService.deleteUser(id);
+        return ResponseEntity.noContent().build();
+    }
+
+    @PatchMapping("/{id}/role")
+    public ResponseEntity<User> changeUserRole(@PathVariable Long id, @RequestParam Role role) {
+        return ResponseEntity.ok(userService.changeUserRole(id, role));
+    }
+
+
 }
