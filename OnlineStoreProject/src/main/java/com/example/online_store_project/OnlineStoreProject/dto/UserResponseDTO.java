@@ -1,36 +1,19 @@
-package com.example.online_store_project.OnlineStoreProject.entity;
+package com.example.online_store_project.OnlineStoreProject.dto;
 
 import com.example.online_store_project.OnlineStoreProject.enums.MessageChannel;
 import com.example.online_store_project.OnlineStoreProject.enums.Role;
-import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Entity
-@Table(name = "users")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class User {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class UserResponseDTO {
     private Long id;
-
-    @Column(unique = true, nullable = false)
     private String email;
-
-    private String password;
-
+    private AddressDTO address;
     private String avatar;
-
-    @Embedded
-    private Address address;
-
-    @Enumerated(EnumType.STRING)
     private Role role;
-
-    @Enumerated(EnumType.STRING)
     private MessageChannel messageChannel;
 }

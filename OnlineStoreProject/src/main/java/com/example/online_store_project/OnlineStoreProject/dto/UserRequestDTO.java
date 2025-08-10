@@ -1,36 +1,26 @@
-package com.example.online_store_project.OnlineStoreProject.entity;
+package com.example.online_store_project.OnlineStoreProject.dto;
 
 import com.example.online_store_project.OnlineStoreProject.enums.MessageChannel;
 import com.example.online_store_project.OnlineStoreProject.enums.Role;
-import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Entity
-@Table(name = "users")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class User {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    @Column(unique = true, nullable = false)
+public class UserRequestDTO {
+    @Email
+    @NotNull
     private String email;
-
+    @NotNull
+    @Size(min = 6, message = "Password must be at least 6 characters")
     private String password;
-
+    private AddressDTO address;
     private String avatar;
-
-    @Embedded
-    private Address address;
-
-    @Enumerated(EnumType.STRING)
     private Role role;
-
-    @Enumerated(EnumType.STRING)
     private MessageChannel messageChannel;
 }
