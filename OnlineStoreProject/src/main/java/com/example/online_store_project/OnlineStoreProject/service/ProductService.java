@@ -64,8 +64,6 @@ public class ProductService {
         product.setDescription(dto.getDescription());
         product.setCategory(category);
 
-        // Nuk ka nevojë për save eksplicit sepse jemi në @Transactional dhe entity është i menaxhuar
-
         return toResponseDto(product);
     }
 
