@@ -1,7 +1,7 @@
 package com.example.online_store_project.OnlineStoreProject.controller;
 
-import com.example.online_store_project.OnlineStoreProject.dto.UserRequestDTO;
-import com.example.online_store_project.OnlineStoreProject.dto.UserResponseDTO;
+import com.example.online_store_project.OnlineStoreProject.dto.request.UserRequestDTO;
+import com.example.online_store_project.OnlineStoreProject.dto.response.UserResponseDTO;
 import com.example.online_store_project.OnlineStoreProject.service.UserService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;

@@ -1,7 +1,7 @@
 package com.example.online_store_project.OnlineStoreProject.service;
 
-import com.example.online_store_project.OnlineStoreProject.dto.UserRequestDTO;
-import com.example.online_store_project.OnlineStoreProject.dto.UserResponseDTO;
+import com.example.online_store_project.OnlineStoreProject.dto.request.UserRequestDTO;
+import com.example.online_store_project.OnlineStoreProject.dto.response.UserResponseDTO;
 import com.example.online_store_project.OnlineStoreProject.entity.User;
 import com.example.online_store_project.OnlineStoreProject.enums.Role;
 import com.example.online_store_project.OnlineStoreProject.mapper.UserMapper;
