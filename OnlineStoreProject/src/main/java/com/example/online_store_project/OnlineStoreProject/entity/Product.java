@@ -3,7 +3,7 @@ package com.example.online_store_project.OnlineStoreProject.entity;
 
 import com.example.online_store_project.OnlineStoreProject.enums.ProductType;
 import jakarta.persistence.*;
-import jdk.jfr.Category;
+import com.example.online_store_project.OnlineStoreProject.entity.Category;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

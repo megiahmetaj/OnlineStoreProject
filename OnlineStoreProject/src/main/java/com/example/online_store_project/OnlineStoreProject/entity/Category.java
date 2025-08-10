@@ -6,21 +6,26 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.HashSet;
-import java.util.Set;
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
 public class Category {
 
-   private String name;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    private String name;
+
+//    @ManyToOne
+//    private Category parent;
 
     @ManyToOne
+    @JoinColumn(name = "parent_id")
     private Category parent;
 
-    @OneToMany(mappedBy = "parent", cascade = CascadeType.ALL)
-    private Set<Category> children = new HashSet<>();
+//    @OneToMany(mappedBy = "parentCategory")
+//    private List<Category> childrenCategories;
 }
 
