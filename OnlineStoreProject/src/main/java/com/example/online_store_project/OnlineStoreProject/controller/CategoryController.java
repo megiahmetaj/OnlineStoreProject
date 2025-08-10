@@ -1,5 +1,7 @@
 package com.example.online_store_project.OnlineStoreProject.controller;
 
+import com.example.online_store_project.OnlineStoreProject.dto.request.CategoryRequestDTO;
+import com.example.online_store_project.OnlineStoreProject.dto.response.CategoryResponseDTO;
 import com.example.online_store_project.OnlineStoreProject.entity.Category;
 import com.example.online_store_project.OnlineStoreProject.entity.Product;
 import com.example.online_store_project.OnlineStoreProject.service.CategoryService;
@@ -8,11 +10,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-
 @RestController
 @RequestMapping("/categories")
 public class CategoryController {
-
 
     private final CategoryService categoryService;
 
@@ -21,17 +21,17 @@ public class CategoryController {
     }
 
     @GetMapping
-    public List<Category> getAllCategories() {
+    public List<CategoryResponseDTO> getAllCategories() {
         return categoryService.findAll();
     }
 
     @PostMapping
-    public Category createCategory(@RequestBody Category category) {
-        return categoryService.save(category);
+    public CategoryResponseDTO createCategory(@RequestBody CategoryRequestDTO categoryRequestDTO) {
+        return categoryService.save(categoryRequestDTO);
     }
 
     @GetMapping("/{id}")
-    public Category getCategoryById(@PathVariable Long id) {
+    public CategoryResponseDTO getCategoryById(@PathVariable Long id) {
         return categoryService.findById(id);
     }
 
@@ -39,5 +39,4 @@ public class CategoryController {
     public void deleteCategory(@PathVariable Long id) {
         categoryService.delete(id);
     }
-
 }

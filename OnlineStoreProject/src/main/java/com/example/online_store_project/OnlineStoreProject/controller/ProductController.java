@@ -1,7 +1,9 @@
 package com.example.online_store_project.OnlineStoreProject.controller;
 
-import com.example.online_store_project.OnlineStoreProject.entity.Product;
+import com.example.online_store_project.OnlineStoreProject.dto.request.ProductRequestDTO;
+import com.example.online_store_project.OnlineStoreProject.dto.response.ProductResponseDTO;
 import com.example.online_store_project.OnlineStoreProject.service.ProductService;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,17 +19,17 @@ public class ProductController {
     }
 
     @GetMapping
-    public List<Product> getAllProducts() {
+    public List<ProductResponseDTO> getAllProducts() {
         return productService.findAll();
     }
 
     @PostMapping
-    public Product createProduct(@RequestBody Product product) {
-        return productService.save(product);
+    public ProductResponseDTO createProduct(@Valid @RequestBody ProductRequestDTO productRequestDTO) {
+        return productService.save(productRequestDTO);
     }
 
     @GetMapping("/{id}")
-    public Product getProductById(@PathVariable Long id) {
+    public ProductResponseDTO getProductById(@PathVariable Long id) {
         return productService.findById(id);
     }
 

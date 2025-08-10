@@ -18,14 +18,12 @@ public class Category {
 
     private String name;
 
-//    @ManyToOne
-//    private Category parent;
-
     @ManyToOne
-    @JoinColumn(name = "parent_id")
     private Category parent;
 
-//    @OneToMany(mappedBy = "parentCategory")
-//    private List<Category> childrenCategories;
+//    @ManyToOne
+//    @JoinColumn(name = "parent_id")
+//    private Category parent;
+
 }
 
