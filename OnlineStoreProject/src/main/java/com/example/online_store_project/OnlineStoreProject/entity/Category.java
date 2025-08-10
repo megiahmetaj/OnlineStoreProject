@@ -21,9 +21,5 @@ public class Category {
     @ManyToOne
     private Category parent;
 
-//    @ManyToOne
-//    @JoinColumn(name = "parent_id")
-//    private Category parent;
-
 }
 
