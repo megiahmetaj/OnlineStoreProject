@@ -7,6 +7,10 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Data
 @AllArgsConstructor
@@ -20,10 +24,14 @@ public class Order {
     private String userName;
     private double totalCost;
     private String deliveryAddress;
+    private LocalDateTime submissionDate;
 
     @Enumerated(EnumType.STRING)
     private OrderStatus orderStatus = OrderStatus.NEW;
 
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<OrderLine> orderLine = new ArrayList<>();
+
     @ManyToOne
-    private User user;
+    private User client;
 }
