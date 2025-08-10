@@ -2,10 +2,8 @@ package com.example.online_store_project.OnlineStoreProject.controller;
 
 import com.example.online_store_project.OnlineStoreProject.dto.request.CategoryRequestDTO;
 import com.example.online_store_project.OnlineStoreProject.dto.response.CategoryResponseDTO;
-import com.example.online_store_project.OnlineStoreProject.entity.Category;
-import com.example.online_store_project.OnlineStoreProject.entity.Product;
 import com.example.online_store_project.OnlineStoreProject.service.CategoryService;
-import com.example.online_store_project.OnlineStoreProject.service.ProductService;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -25,14 +23,19 @@ public class CategoryController {
         return categoryService.findAll();
     }
 
-    @PostMapping
-    public CategoryResponseDTO createCategory(@RequestBody CategoryRequestDTO categoryRequestDTO) {
-        return categoryService.save(categoryRequestDTO);
-    }
-
     @GetMapping("/{id}")
     public CategoryResponseDTO getCategoryById(@PathVariable Long id) {
         return categoryService.findById(id);
+    }
+
+    @PostMapping
+    public CategoryResponseDTO createCategory(@Valid @RequestBody CategoryRequestDTO categoryRequestDTO) {
+        return categoryService.save(categoryRequestDTO);
+    }
+
+    @PutMapping("/{id}")
+    public CategoryResponseDTO updateCategory(@PathVariable Long id, @Valid @RequestBody CategoryRequestDTO categoryRequestDTO) {
+        return categoryService.update(id, categoryRequestDTO);
     }
 
     @DeleteMapping("/{id}")

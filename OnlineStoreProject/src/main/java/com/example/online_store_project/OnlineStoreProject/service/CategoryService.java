@@ -36,6 +36,13 @@ public class CategoryService {
     public CategoryResponseDTO save(CategoryRequestDTO dto) {
         Category category = new Category();
         category.setName(dto.getName());
+
+        if (dto.getParentId() != null) {
+            Category parent = categoryRepository.findById(dto.getParentId())
+                    .orElseThrow(() -> new EntityNotFoundException("Parent category not found with id " + dto.getParentId()));
+            category.setParent(parent);
+        }
+
         Category saved = categoryRepository.save(category);
         return toResponseDto(saved);
     }
@@ -44,7 +51,16 @@ public class CategoryService {
     public CategoryResponseDTO update(Long id, CategoryRequestDTO dto) {
         Category category = categoryRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Category not found with id " + id));
+
         category.setName(dto.getName());
+
+        if (dto.getParentId() != null) {
+            Category parent = categoryRepository.findById(dto.getParentId())
+                    .orElseThrow(() -> new EntityNotFoundException("Parent category not found with id " + dto.getParentId()));
+            category.setParent(parent);
+        } else {
+            category.setParent(null);
+        }
 
         return toResponseDto(category);
     }
@@ -61,6 +77,7 @@ public class CategoryService {
         CategoryResponseDTO dto = new CategoryResponseDTO();
         dto.setId(category.getId());
         dto.setName(category.getName());
+        dto.setParentId(category.getParent() != null ? category.getParent().getId() : null);
         return dto;
     }
 }
