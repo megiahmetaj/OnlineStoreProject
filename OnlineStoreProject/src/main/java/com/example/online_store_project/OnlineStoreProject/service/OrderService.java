@@ -64,8 +64,8 @@ public class OrderService {
         return toDto(saved);
     }
 
-    public List<OrderResponseDTO> getAllOrders() {
-        return orderRepository.findAll().stream().map(this::toDto).toList();
+    public List<Order> getAllOrders() {
+        return orderRepository.findAll();
     }
 
     public OrderResponseDTO getOrderById(Long id) {
