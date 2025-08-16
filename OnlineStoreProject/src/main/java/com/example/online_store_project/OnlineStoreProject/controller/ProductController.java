@@ -4,6 +4,7 @@ import com.example.online_store_project.OnlineStoreProject.dto.request.ProductRe
 import com.example.online_store_project.OnlineStoreProject.dto.response.ProductResponseDTO;
 import com.example.online_store_project.OnlineStoreProject.service.ProductService;
 import jakarta.validation.Valid;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -32,6 +33,15 @@ public class ProductController {
     public ProductResponseDTO getProductById(@PathVariable Long id) {
         return productService.findById(id);
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<ProductResponseDTO> updateProduct(
+            @PathVariable Long id,
+            @RequestBody ProductRequestDTO dto) {
+        ProductResponseDTO updatedProduct = productService.update(id, dto);
+        return ResponseEntity.ok(updatedProduct);
+    }
+
 
     @DeleteMapping("/{id}")
     public void deleteProduct(@PathVariable Long id) {
