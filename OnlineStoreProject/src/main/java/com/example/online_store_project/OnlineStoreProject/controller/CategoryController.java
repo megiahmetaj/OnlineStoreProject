@@ -4,6 +4,8 @@ import com.example.online_store_project.OnlineStoreProject.dto.request.CategoryR
 import com.example.online_store_project.OnlineStoreProject.dto.response.CategoryResponseDTO;
 import com.example.online_store_project.OnlineStoreProject.service.CategoryService;
 import jakarta.validation.Valid;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -13,6 +15,9 @@ import java.util.List;
 public class CategoryController {
 
     private final CategoryService categoryService;
+
+    private static final Logger logger = LoggerFactory.getLogger(CategoryController.class);
+
 
     public CategoryController(CategoryService categoryService) {
         this.categoryService = categoryService;
