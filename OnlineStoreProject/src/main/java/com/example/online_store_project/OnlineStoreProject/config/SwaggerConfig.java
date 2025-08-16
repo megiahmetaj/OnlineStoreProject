@@ -15,4 +15,5 @@ public class SwaggerConfig {
                         .version("1.0")
                         .description("API documentation for the Online Store Project"));
     }
+
 }
