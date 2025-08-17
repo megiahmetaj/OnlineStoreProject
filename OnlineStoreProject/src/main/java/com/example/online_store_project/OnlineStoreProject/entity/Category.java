@@ -19,7 +19,7 @@ public class Category {
     private String name;
 
     @ManyToOne
-    @JoinColumn(name = "parent_id") // kolona në DB që ruan prindin
+    @JoinColumn(name = "parent_id")
     private Category parent;
 
 
