@@ -20,10 +20,10 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
-                .csrf(csrf -> csrf.disable()) // disable CSRF for testing
-                .cors(cors -> {}) // kjo e bën që CorsConfig të merret parasysh
+                .csrf(csrf -> csrf.disable())
+                .cors(cors -> {})
                 .authorizeHttpRequests(auth -> auth
-                        .anyRequest().permitAll() // allow all endpoints without authentication
+                        .anyRequest().permitAll()
                 );
         return http.build();
     }

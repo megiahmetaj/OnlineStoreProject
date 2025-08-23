@@ -34,10 +34,10 @@ public class UserService {
 
         User user = UserMapper.toEntity(userRequestDTO);
 
-        // Encode password before saving
+
         user.setPassword(passwordEncoder.encode(userRequestDTO.getPassword()));
 
-        // Force role to USER for registration
+
         user.setRole(Role.USER);
 
         User savedUser = userRepository.save(user);
@@ -54,14 +54,12 @@ public class UserService {
         return userRepository.findById(id).map(UserMapper::toDTO);
     }
 
-    // Update user info (except role and password here for simplicity)
     public UserResponseDTO updateUser(Long id, UserRequestDTO updatedData) {
         User user = userRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("User not found"));
         if (updatedData.getAvatar() != null) user.setAvatar(updatedData.getAvatar());
         if (updatedData.getAddress() != null) {
             user.setAddress(UserMapper.toEntity(updatedData).getAddress());
         }
-        // You can add password change with hashing, role update with proper authorization here
 
         return UserMapper.toDTO(userRepository.save(user));
     }

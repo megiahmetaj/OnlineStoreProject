@@ -22,7 +22,6 @@ public class UserController {
         this.userService = userService;
     }
 
-    // Register new user
     @PostMapping("/register")
     public ResponseEntity<?> registerUser(@Valid @RequestBody UserRequestDTO userRequestDTO) {
         try {
@@ -33,7 +32,6 @@ public class UserController {
         }
     }
 
-    // Get user by ID
     @GetMapping("/{id}")
     public ResponseEntity<Object> getUserById(@PathVariable Long id) {
         return userService.getUserById(id)
@@ -42,8 +40,6 @@ public class UserController {
     }
 
 
-
-    // Update user info
     @PutMapping("/{id}")
     public ResponseEntity<?> updateUser(@PathVariable Long id,
                                         @Valid @RequestBody UserRequestDTO userRequestDTO) {
